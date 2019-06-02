@@ -1,0 +1,18 @@
+{
+    "PAGES": {
+        "HOME": {
+            "TITLE_PAGE": "Inicio",
+            "TITLE": "Title | Prueba titulo",
+            "CONTENT": "Content | Prueba contenido",
+            "BTN_ES": "Español",
+            "BTN_EN": "English"
+          },
+          "EVENT":{
+              "TITLE_PAGE":"Evento!",
+              "TITLE":"Atención",
+              "MESSAGE_WITH_PERCENT":"Actualmente Etien Reseller tiene un descuento del:",
+              "MESSAGE_BUY_NOW":"Realiza tu compra ya!",
+              "MESSAGE_NO_PERCENT":"Actualmente Etien Reseller tiene una promoción especial para ti, visita nuestras redes sociales e informate!"
+          }
+        }
+  }

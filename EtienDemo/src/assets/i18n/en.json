@@ -1,0 +1,18 @@
+{
+    "PAGES": {
+        "HOME": {
+            "TITLE_PAGE": "Home",
+            "TITLE": "Title | Test title",
+            "CONTENT": "Content | Content Test",
+            "BTN_ES": "Spanish",
+            "BTN_EN": "English"
+          },
+          "EVENT":{
+              "TITLE_PAGE":"Event!",
+              "TITLE":"Attention",
+              "MESSAGE_WITH_PERCENT":"Right now Etien Reseller has a discount offer of:",
+              "MESSAGE_BUY_NOW":"Do your purchase today!",
+              "MESSAGE_NO_PERCENT":"Right now Etien Reseller has a special offer for you! Go to our social networks and check it out"
+            }
+        }
+ }

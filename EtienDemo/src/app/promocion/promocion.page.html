@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'PAGES.EVENT.TITLE_PAGE' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{'PAGES.EVENT.TITLE' | translate}} {{country}}!</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content align-items-center>
+      <div align-items-center *ngIf="percent; else NoPercent">
+        {{'PAGES.EVENT.MESSAGE_WITH_PERCENT' | translate}}
+        <h2>{{percent}}%</h2>
+        {{'PAGES.EVENT.MESSAGE_BUY_NOW' | translate}}
+      </div>
+      <ng-template #NoPercent>
+        <div align-items-center>
+          {{'PAGES.EVENT.MESSAGE_NO_PERCENT' | translate}}
+        </div>
+      </ng-template>
+    </ion-card-content>
+
+
+
+  </ion-card>
+</ion-content>

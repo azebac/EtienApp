@@ -1,0 +1,7 @@
+{
+  "name": "EtienDemo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
