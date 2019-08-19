@@ -13,12 +13,12 @@ namespace entities
 
         public static UserEntity CreateUserEntity(long id = 0, string name = null, string lastName = null,
             string userName = null, string password = null, string email = null, string cellphone = null,
+            bool isReseller = false, bool isAdmin = false, string salt = null,
             UserGenderType gender = UserGenderType.Female, UserStatusType status = UserStatusType.Active,
             CountryEntity country = null, IList<PreferenceEntity> selectedPreferences = null)
         {
-            
-            return new UserEntity(id, name, lastName, userName, password,email, cellphone, gender, status,
-                country, selectedPreferences);
+            return new UserEntity(id, name, lastName, userName, password, email, cellphone, isReseller, isAdmin, salt, gender,
+                status, country, selectedPreferences);
         }
 
         public static CountryEntity CreateCountryEntity(long id = 0, string name = null,

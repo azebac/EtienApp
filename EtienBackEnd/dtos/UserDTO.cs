@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using enums;
 
-namespace entities
+namespace dtos
 {
-    public class UserEntity:Entity
+    public class UserDTO:BaseDTO
     {
         public virtual string Name { get; set; }
         public virtual string LastName { get; set; }
@@ -12,18 +11,14 @@ namespace entities
         public virtual string Password { get; set; }
         public virtual string Email { get; set; }
         public virtual string Cellphone { get; set; }
-        public virtual bool IsReseller { get; set; }
-        public virtual bool IsAdmin { get; set; }
-        public virtual string Salt { get; set; }
         public virtual UserGenderType Gender { get; set; }
         public virtual UserStatusType Status { get; set; }
-        public virtual CountryEntity Country { get; set; }
-        public virtual IList<PreferenceEntity> SelectedPreferences { get; set; }
+        public virtual CountryDTO Country { get; set; }
+        public virtual IList<PreferenceDTO> SelectedPreferences { get; set; }
 
-
-        public UserEntity(long id, string name, string lastName, string userName, string password, string email,
-            string cellphone, bool isReseller, bool isAdmin, string salt, UserGenderType gender, UserStatusType status, CountryEntity country,
-            IList<PreferenceEntity> selectedPreferences) : base(id)
+        public UserDTO(long id, string name, string lastName, string userName, string password, string email,
+            string cellphone, UserGenderType gender, UserStatusType status, CountryDTO country,
+            IList<PreferenceDTO> selectedPreferences) : base(id)
         {
             Name = name;
             LastName = lastName;
@@ -31,9 +26,6 @@ namespace entities
             Password = password;
             Email = email;
             Cellphone = cellphone;
-            IsReseller = isReseller;
-            IsAdmin = isAdmin;
-            Salt = salt;
             Gender = gender;
             Status = status;
             Country = country;
