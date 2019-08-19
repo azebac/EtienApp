@@ -17,7 +17,7 @@ namespace daoNHibernate.implementation
         public static ISessionFactory CreateFactorySession()
         {
             #region instrumentation
-            _log.DebugFormat("creando sesión Fluent NHibernate ");
+            _log.DebugFormat("creando fabrica de Fluent NHibernate ");
             #endregion
 
             ISessionFactory returnConfiguration = Fluently.Configure().Database(
@@ -28,7 +28,7 @@ namespace daoNHibernate.implementation
                 .BuildSessionFactory();
 
             #region instrumentation
-            _log.DebugFormat("saliendo de creación de sesión Fluent NHibernate: Resultado {0} ", returnConfiguration);
+            _log.DebugFormat("saliendo de creación de fabruca de Fluent NHibernate: Resultado {0} ", returnConfiguration);
             #endregion
 
             return returnConfiguration;
