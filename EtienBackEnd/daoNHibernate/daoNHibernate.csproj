@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoNHbiernateFactory.cs" />
+    <Compile Include="implementation\BaseDao.cs" />
     <Compile Include="implementation\FluentNHibernateHelper.cs" />
     <Compile Include="mapping\CountryMap.cs" />
     <Compile Include="mapping\PreferenceMap.cs" />
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\enums\enums.csproj">
       <Project>{17F6F7E7-9E2F-4DB7-9EF0-BEAE35EE1ED7}</Project>
       <Name>enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\interfaces\interfaces.csproj">
+      <Project>{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}</Project>
+      <Name>interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
