@@ -50,6 +50,10 @@
     <Compile Include="UserEntity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dtos\dtos.csproj">
+      <Project>{6239E30F-FE4A-4883-A47E-49476F5698A8}</Project>
+      <Name>dtos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\enums\enums.csproj">
       <Project>{17F6F7E7-9E2F-4DB7-9EF0-BEAE35EE1ED7}</Project>
       <Name>enums</Name>

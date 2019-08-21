@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Commands;
 using dtos;
+using entities;
 
 namespace EtienBackEnd.Controllers
 {
@@ -15,9 +12,13 @@ namespace EtienBackEnd.Controllers
         [Route("register")]
         public IHttpActionResult RegisterUser(UserDTO user)
         {
+            
             if (user == null)
                 return BadRequest();
-            return Ok(user);
+            UserEntity userToRegister = EntityFactory.CreateUserEntity(user);
+            Command<UserEntity> commandRegisterUser = CommandFactory.GenerateCreateUserCommand(userToRegister);
+            commandRegisterUser.Execute();
+            return Ok(userToRegister);
         }
     }
 }

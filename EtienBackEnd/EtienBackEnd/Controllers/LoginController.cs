@@ -1,8 +1,14 @@
 ﻿
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Web.Http;
+using Commands;
+using dtos;
+using entities;
+using exceptions;
 using EtienBackEnd.Models;
+using log4net;
 
 namespace EtienBackEnd.Controllers
 {
@@ -13,6 +19,8 @@ namespace EtienBackEnd.Controllers
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         [HttpGet]
         [Route("echoping")]
         public IHttpActionResult EchoPing()
@@ -30,22 +38,39 @@ namespace EtienBackEnd.Controllers
 
         [HttpPost]
         [Route("authenticate")]
-        public IHttpActionResult Authenticate(LoginRequest login)
+        public IHttpActionResult Authenticate(UserDTO login)
         {
-            if (login == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //TODO: Validate credentials Correctly, this code is only for demo !!
-            bool isCredentialValid = (login.Password == "123456");
-            if (isCredentialValid)
+            UserEntity userLogginIn = EntityFactory.CreateUserEntity(login);
+            string token = TokenGenerator.GenerateTokenJwt(login.UserName);
+            Command<UserEntity> loginCommand = CommandFactory.GenerateValidateLoginCommand(userLogginIn,token);
+            UserDTO responseUser = null;
+            try
             {
-                var token = TokenGenerator.GenerateTokenJwt(login.Username);
-                return Ok(token);
+                loginCommand.Execute();
+                userLogginIn = loginCommand.Param;
+                responseUser = userLogginIn.ConvertToDTO();
+
             }
-            else
+            catch (WrongPasswordException e)
             {
-                return Unauthorized();
+
+                #region instrumentation
+                _log.ErrorFormat("Error en login de {0} producido por: {1}",login.UserName,e.InnerMessage);
+                #endregion
+
+                Unauthorized();
             }
+            catch (UsernameNotFoundException e)
+            {
+
+                #region instrumentation
+                _log.ErrorFormat("Error en login de {0} producido por: {1}", login.UserName, e.InnerMessage);
+                #endregion
+
+                Unauthorized();
+            }
+            return Ok(responseUser);
         }
     }
 }

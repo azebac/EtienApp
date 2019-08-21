@@ -5,9 +5,11 @@ namespace dtos
 {
     public static class DTOFactory
     {
-        public static CountryDTO CreateCountryDTO(long id = 0, string name = null)
+        public static CountryDTO CreateCountryDTO(long id = 0, string name = null, string iso = null,
+            string niceName = null, string iso3 = null, int numCode = 0,
+            int phoneCode = 0)
         {
-            return new CountryDTO(id, name);
+            return new CountryDTO(id, name, iso, niceName, iso3, numCode, phoneCode);
         }
 
         public static PreferenceDTO CreatePreferenceDto(long id = 0, string name = null)
@@ -19,10 +21,10 @@ namespace dtos
             string userName = null, string password = null, string email = null,
             string cellphone = null, UserGenderType gender = UserGenderType.Female,
             UserStatusType status = UserStatusType.Active, CountryDTO country = null,
-            IList<PreferenceDTO> selectedPreferences = null)
+            IList<PreferenceDTO> selectedPreferences = null, string appToken = null)
         {
             return new UserDTO(id, name, lastName, userName, password, email,
-                cellphone, gender, status, country, selectedPreferences);
+                cellphone, gender, status, country, selectedPreferences, appToken);
         }
     }
 }

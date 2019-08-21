@@ -155,6 +155,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Commands\Commands.csproj">
+      <Project>{80F5E3C8-1755-4AD4-8C6B-5983D6631BD4}</Project>
+      <Name>Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\daoNHibernate\daoNHibernate.csproj">
       <Project>{60F40432-0E7D-4993-8A64-4E67947EBAA4}</Project>
       <Name>daoNHibernate</Name>
@@ -162,6 +166,18 @@
     <ProjectReference Include="..\dtos\dtos.csproj">
       <Project>{6239E30F-FE4A-4883-A47E-49476F5698A8}</Project>
       <Name>dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\entities\entities.csproj">
+      <Project>{2A125D4D-82F8-4C65-BAA1-DFDE719EBCD2}</Project>
+      <Name>entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enums\enums.csproj">
+      <Project>{17f6f7e7-9e2f-4db7-9ef0-beae35ee1ed7}</Project>
+      <Name>enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\exceptions\exceptions.csproj">
+      <Project>{511FBF17-ED75-4A21-8BE7-18048D0D8CB7}</Project>
+      <Name>exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\libraries\libraries.csproj">
       <Project>{73A7B519-E833-460A-996C-EFD432D14CCC}</Project>

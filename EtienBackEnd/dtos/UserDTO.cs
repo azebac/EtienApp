@@ -11,6 +11,7 @@ namespace dtos
         public virtual string Password { get; set; }
         public virtual string Email { get; set; }
         public virtual string Cellphone { get; set; }
+        public virtual string AppToken { get; set; }
         public virtual UserGenderType Gender { get; set; }
         public virtual UserStatusType Status { get; set; }
         public virtual CountryDTO Country { get; set; }
@@ -18,7 +19,7 @@ namespace dtos
 
         public UserDTO(long id, string name, string lastName, string userName, string password, string email,
             string cellphone, UserGenderType gender, UserStatusType status, CountryDTO country,
-            IList<PreferenceDTO> selectedPreferences) : base(id)
+            IList<PreferenceDTO> selectedPreferences, string appToken) : base(id)
         {
             Name = name;
             LastName = lastName;
@@ -30,6 +31,7 @@ namespace dtos
             Status = status;
             Country = country;
             SelectedPreferences = selectedPreferences;
+            AppToken = appToken;
         }
     }
 }

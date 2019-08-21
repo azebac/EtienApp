@@ -9,5 +9,15 @@ namespace Commands
         {
             return new CreateUserCommand(userToRegister);
         }
+
+        public static SearchUserNicknameCommand GenerateSearchUserNicknameCommand(UserEntity userToSearch)
+        {
+            return new SearchUserNicknameCommand(userToSearch);
+        }
+
+        public static ValidateLoginCommand GenerateValidateLoginCommand(UserEntity userLogginIn, string jwtToken)
+        {
+            return new ValidateLoginCommand(userLogginIn, jwtToken);
+        }
     }
 }

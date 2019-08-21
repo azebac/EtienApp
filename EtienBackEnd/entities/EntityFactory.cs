@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using dtos;
 using enums;
 
 namespace entities
@@ -15,16 +16,25 @@ namespace entities
             string userName = null, string password = null, string email = null, string cellphone = null,
             bool isReseller = false, bool isAdmin = false, string salt = null,
             UserGenderType gender = UserGenderType.Female, UserStatusType status = UserStatusType.Active,
-            CountryEntity country = null, IList<PreferenceEntity> selectedPreferences = null)
+            CountryEntity country = null, IList<PreferenceEntity> selectedPreferences = null, string appToken = null)
         {
             return new UserEntity(id, name, lastName, userName, password, email, cellphone, isReseller, isAdmin, salt, gender,
-                status, country, selectedPreferences);
+                status, country, selectedPreferences, appToken);
         }
 
-        public static CountryEntity CreateCountryEntity(long id = 0, string name = null,
+        public static UserEntity CreateUserEntity(UserDTO dto)
+        {
+            return new UserEntity(dto);
+        }
+
+
+
+        public static CountryEntity CreateCountryEntity(long id = 0, string name = null, string iso = null,
+            string niceName = null, string iso3 = null, int numCode = 0, int phoneCode = 0,
             IList<UserEntity> associatedUsers = null)
         {
-            return new CountryEntity(id, name, associatedUsers);
+            return new CountryEntity(id, name, iso, niceName, iso3, numCode, phoneCode,
+                associatedUsers);
         }
     }
 }

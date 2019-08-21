@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using dtos;
 
 namespace entities
 {
@@ -20,6 +21,12 @@ namespace entities
             Name = name;
             AssociatedUsers = associatedUsers;
         }
+
+        public PreferenceEntity(PreferenceDTO preference) : base(preference.Id)
+        {
+            Name = preference.Name;
+        }
+        
 
         protected bool Equals(PreferenceEntity other)
         {
@@ -48,6 +55,12 @@ namespace entities
         public override string ToString()
         {
             return $"{base.ToString()}, {nameof(Name)}: {Name}, {nameof(AssociatedUsers)}: {AssociatedUsers}";
+        }
+
+        public virtual PreferenceDTO ConvertToDTO()
+        {
+            PreferenceDTO preferenceDto = DTOFactory.CreatePreferenceDto(Id, Name);
+            return preferenceDto;
         }
     }
 }

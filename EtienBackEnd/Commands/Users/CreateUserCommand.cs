@@ -8,6 +8,7 @@ using log4net;
 using entities;
 using interfaces;
 using System.Configuration;
+using libraries;
 
 namespace Commands.Users
 {
@@ -16,7 +17,7 @@ namespace Commands.Users
         private UserEntity UserToRegister { get; set; }
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public override UserEntity Param { get; set; }
-        private static int saltLengthLimit = int.Parse(ConfigurationManager.AppSettings["PasswordSaltLenght"]);
+        
 
         public CreateUserCommand(UserEntity userToRegister)
         {
@@ -44,7 +45,8 @@ namespace Commands.Users
             #endregion
 
             IDaoUserEntity dao = DaoNHbiernateFactory.FabricateUserEntityDao();
-            EncryptPassword(UserToRegister);
+            Encryptor encryptor = new Encryptor();
+            UserToRegister.Password = encryptor.GenerateEncryptedPassword(UserToRegister.Password);
             Param = dao.Add(UserToRegister);
 
             #region Instrumentation
@@ -53,45 +55,8 @@ namespace Commands.Users
 
             #endregion
         }
-
-        private void EncryptPassword(UserEntity userToRegister)
-        {
-            #region instrumentation
-            _log.DebugFormat("Encriptando el password del usuario {0}", userToRegister.UserName);
-            #endregion
-            
-            byte[] salt = GetSalt();
-            Rfc2898DeriveBytes encrypter = new Rfc2898DeriveBytes(userToRegister.Password, salt, 10000);
-            byte[] hash = encrypter.GetBytes(20);
-            byte[] hashBytes = new byte[52];
-            Array.Copy(salt, 0,hashBytes,0,32);
-            Array.Copy(hash, 0,hashBytes, 32,20);
-            userToRegister.Password = Convert.ToBase64String(hashBytes);
-
-            #region Instrumentation
-
-            _log.Debug("Encriptado de password completado");
-
-            #endregion
-            
-        }
-
         
-        private byte[] GetSalt()
-        {
-            return GetSalt(saltLengthLimit);
-        }
 
-        private byte[] GetSalt(int maximumSaltLength)
-        {
-            byte[] salt = new byte[maximumSaltLength];
-            using (RNGCryptoServiceProvider random = new RNGCryptoServiceProvider())
-            {
-                random.GetNonZeroBytes(salt);
-            }
-
-            return salt;
-        }
 
     }
 }
