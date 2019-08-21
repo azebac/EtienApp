@@ -31,17 +31,13 @@ export interface NavData {
 
 export const navItems: NavData[] = [
   {
-    name: 'Dashboard',
+    name: 'Home',
     url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'home'
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'Administración'
   },
   {
     name: 'Colors',
