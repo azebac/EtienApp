@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtos", "dtos\dtos.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interfaces", "interfaces\interfaces.csproj", "{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit", "Unit\Unit.csproj", "{86D09210-4AC4-4957-80FE-C7337DB8CDFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86D09210-4AC4-4957-80FE-C7337DB8CDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86D09210-4AC4-4957-80FE-C7337DB8CDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86D09210-4AC4-4957-80FE-C7337DB8CDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86D09210-4AC4-4957-80FE-C7337DB8CDFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{80F5E3C8-1755-4AD4-8C6B-5983D6631BD4} = {216CC487-FCDE-420F-BDB9-6453E39E63D0}
 		{6239E30F-FE4A-4883-A47E-49476F5698A8} = {1F083CBD-BB61-4765-B03A-6AFE72C5B3D6}
 		{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0} = {CF0C07DD-33F7-4678-86AD-3261ED437622}
+		{86D09210-4AC4-4957-80FE-C7337DB8CDFD} = {17CFEC99-61CA-4226-AF17-D4D05A6DC04C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B26508F-0857-4CDD-B0FE-D36336E61CCE}

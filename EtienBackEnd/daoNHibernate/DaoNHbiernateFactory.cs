@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using daoNHibernate.implementation;
+using libraries;
 
 namespace daoNHibernate
 {
     public class DaoNHbiernateFactory
     {
+        public static UserEntityDao FabricateUserEntityDao()
+        {
+            return new UserEntityDao(GlobalRegistry.GetInstance().Session);
+        }
+
+        public static PreferenceEntityDao FabricatePreferenceEntityDao()
+        {
+            return new PreferenceEntityDao(GlobalRegistry.GetInstance().Session);
+        }
     }
 }

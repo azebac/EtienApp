@@ -125,7 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
     <ProjectReference Include="..\daoNHibernate\daoNHibernate.csproj">
       <Project>{60F40432-0E7D-4993-8A64-4E67947EBAA4}</Project>
       <Name>daoNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dtos\dtos.csproj">
+      <Project>{6239E30F-FE4A-4883-A47E-49476F5698A8}</Project>
+      <Name>dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\libraries\libraries.csproj">
       <Project>{73A7B519-E833-460A-996C-EFD432D14CCC}</Project>

@@ -36,6 +36,7 @@
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,9 +56,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\daoNHibernate\daoNHibernate.csproj">
+      <Project>{60F40432-0E7D-4993-8A64-4E67947EBAA4}</Project>
+      <Name>daoNHibernate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\entities\entities.csproj">
       <Project>{2a125d4d-82f8-4c65-baa1-dfde719ebcd2}</Project>
       <Name>entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\interfaces\interfaces.csproj">
+      <Project>{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}</Project>
+      <Name>interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

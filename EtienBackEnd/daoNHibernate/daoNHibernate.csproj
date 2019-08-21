@@ -67,6 +67,8 @@
     <Compile Include="DaoNHbiernateFactory.cs" />
     <Compile Include="implementation\BaseDao.cs" />
     <Compile Include="implementation\FluentNHibernateHelper.cs" />
+    <Compile Include="implementation\PreferenceEntityDao.cs" />
+    <Compile Include="implementation\UserEntityDao.cs" />
     <Compile Include="mapping\CountryMap.cs" />
     <Compile Include="mapping\PreferenceMap.cs" />
     <Compile Include="mapping\UserMap.cs" />
@@ -88,6 +90,10 @@
     <ProjectReference Include="..\interfaces\interfaces.csproj">
       <Project>{4C1C2950-32F9-4F6A-B58E-E90C8DAAB8B0}</Project>
       <Name>interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\libraries\libraries.csproj">
+      <Project>{73A7B519-E833-460A-996C-EFD432D14CCC}</Project>
+      <Name>libraries</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
