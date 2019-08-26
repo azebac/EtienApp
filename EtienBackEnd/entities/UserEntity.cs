@@ -13,6 +13,7 @@ namespace entities
         public virtual string Password { get; set; }
         public virtual string Email { get; set; }
         public virtual string Cellphone { get; set; }
+        public virtual string UserDeviceId { get; set; }
         public virtual bool IsReseller { get; set; }
         public virtual bool IsAdmin { get; set; }
         public virtual string Salt { get; set; }
@@ -28,7 +29,7 @@ namespace entities
 
         public UserEntity(long id, string name, string lastName, string userName, string password, string email,
             string cellphone, bool isReseller, bool isAdmin, string salt, UserGenderType gender, UserStatusType status, CountryEntity country,
-            IList<PreferenceEntity> selectedPreferences, string appToken) : base(id)
+            IList<PreferenceEntity> selectedPreferences, string appToken, string userDeviceId) : base(id)
         {
             Name = name;
             LastName = lastName;
@@ -44,6 +45,7 @@ namespace entities
             Country = country;
             SelectedPreferences = selectedPreferences;
             AppToken = appToken;
+            UserDeviceId = userDeviceId;
         }
 
         public UserEntity(UserDTO dto):base(dto.Id)
@@ -67,6 +69,8 @@ namespace entities
                 }
             }
 
+            UserDeviceId = dto.UserDeviceId;
+
         }
 
         public virtual UserDTO ConvertToDTO()
@@ -83,7 +87,7 @@ namespace entities
             CountryDTO country = null;
             Country?.ConvertToDTO();
             UserDTO userDto = DTOFactory.CreateUserDto(Id, Name, LastName, UserName, "", Email, Cellphone, Gender,
-                Status, country, preferences, AppToken);
+                Status, country, preferences, AppToken, UserDeviceId);
             return userDto;
         }
     }

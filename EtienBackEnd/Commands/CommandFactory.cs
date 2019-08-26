@@ -19,5 +19,15 @@ namespace Commands
         {
             return new ValidateLoginCommand(userLogginIn, jwtToken);
         }
+
+        public static GetAllUsersCommand GenerateGetAllUsersCommand()
+        {
+            return new GetAllUsersCommand();
+        }
+
+        public static GetUserByIdCommand GenerateGetUserByIdCommand(UserEntity userToSearch)
+        {
+            return new GetUserByIdCommand(userToSearch);
+        }
     }
 }

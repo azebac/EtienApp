@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Results;
 using dtos;
@@ -8,7 +6,6 @@ using entities;
 using enums;
 using EtienBackEnd.Controllers;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 
 namespace Unit
 {
@@ -42,6 +39,31 @@ namespace Unit
             IHttpActionResult result = controller.Authenticate(userDto);
             OkNegotiatedContentResult<UserDTO> contentResult = result as OkNegotiatedContentResult<UserDTO>;
             Assert.NotZero(contentResult.Content.Id);
+
+        }
+
+        [Test]
+        public void GetAllUsersTest()
+        {
+            UserController controller = new UserController();
+            IHttpActionResult result = controller.GetAllUsers();
+            OkNegotiatedContentResult < IList < UserDTO >> contentResult = result as OkNegotiatedContentResult<IList<UserDTO>>;
+            Assert.NotZero(contentResult.Content.Count);
+        }
+
+        [Test]
+        public void GetUserByIdTest()
+        {
+            UserDTO userDTO = DTOFactory.CreateUserDto(3);
+            UserController controller = new UserController();
+            IHttpActionResult result = controller.GetUserById(userDTO);
+            OkNegotiatedContentResult<UserDTO> contentResult = result as OkNegotiatedContentResult<UserDTO>;
+            Assert.NotNull(contentResult.Content);
+
+        }
+
+        public void SendFCMNotificationTest()
+        {
 
         }
     }

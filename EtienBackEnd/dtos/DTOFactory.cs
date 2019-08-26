@@ -21,10 +21,10 @@ namespace dtos
             string userName = null, string password = null, string email = null,
             string cellphone = null, UserGenderType gender = UserGenderType.Female,
             UserStatusType status = UserStatusType.Active, CountryDTO country = null,
-            IList<PreferenceDTO> selectedPreferences = null, string appToken = null)
+            IList<PreferenceDTO> selectedPreferences = null, string appToken = null, string userDeviceId = null)
         {
             return new UserDTO(id, name, lastName, userName, password, email,
-                cellphone, gender, status, country, selectedPreferences, appToken);
+                cellphone, gender, status, country, selectedPreferences, appToken, userDeviceId);
         }
     }
 }

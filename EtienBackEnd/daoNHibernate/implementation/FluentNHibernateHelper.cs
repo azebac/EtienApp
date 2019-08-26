@@ -24,7 +24,7 @@ namespace daoNHibernate.implementation
                     MySQLConfiguration.Standard.ConnectionString(
                         x => x.FromConnectionStringWithKey("MySql")))
                 .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
-                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
+                //.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
                 .BuildSessionFactory();
 
             #region instrumentation

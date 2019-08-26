@@ -19,14 +19,17 @@ namespace libraries
             return encryptedPassword;
         }
 
-        private byte[] GeneratePasswordEncryptedBytes(string userPassword)
+        private byte[] GeneratePasswordEncryptedBytes(string userPassword, byte[] salt = null)
         {
-            byte[] salt = GetSalt();
+            if (salt == null)
+            {
+                salt = GetSalt();
+            }
             Rfc2898DeriveBytes encrypter = new Rfc2898DeriveBytes(userPassword, salt, _numberOfIterations);
             byte[] hash = encrypter.GetBytes(20);
             byte[] hashBytes = new byte[52];
-            Array.Copy(salt, 0, hashBytes, 0, 32);
-            Array.Copy(hash, 0, hashBytes, 32, 20);
+            Array.Copy(salt, 0, hashBytes, 0, saltLengthLimit);
+            Array.Copy(hash, 0, hashBytes, saltLengthLimit, 20);
             return hashBytes;
         }
 
@@ -50,7 +53,9 @@ namespace libraries
         {
             bool result = true;
             byte[] currentPasswordBytes = Convert.FromBase64String(currentPassword);
-            byte[] passwordToCompareBytes = GeneratePasswordEncryptedBytes(passwordToCompare);
+            byte[] currentUserSalt = new byte[saltLengthLimit];
+            Array.Copy(currentPasswordBytes, 0, currentUserSalt, 0, saltLengthLimit);
+            byte[] passwordToCompareBytes = GeneratePasswordEncryptedBytes(passwordToCompare, currentUserSalt);
             result = ComparePasswordBytes(passwordToCompareBytes, currentPasswordBytes);
             return result;
         }
@@ -60,7 +65,7 @@ namespace libraries
             bool result = true;
             for (int i = 0; i < 20; i++)
             {
-                if (currentPassword[i + 32] != passwordToCompare[i + 32])
+                if (currentPassword[i + saltLengthLimit] != passwordToCompare[i + saltLengthLimit])
                     result = false;
             }
             return result;
