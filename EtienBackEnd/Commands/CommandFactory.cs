@@ -29,5 +29,10 @@ namespace Commands
         {
             return new GetUserByIdCommand(userToSearch);
         }
+
+        public static UpdateUserCommand GenerateUpdateUserCommand(UserEntity NewData)
+        {
+            return new UpdateUserCommand(NewData);
+        }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="Users\GetAllUsersCommand.cs" />
     <Compile Include="Users\GetUserByIdCommand.cs" />
     <Compile Include="Users\SearchUserNicknameCommand.cs" />
+    <Compile Include="Users\UpdateUserCommand.cs" />
     <Compile Include="Users\ValidateLoginCommand.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -62,9 +62,25 @@ namespace Unit
 
         }
 
+        [Test]
+        public void UpdateUserTest()
+        {
+            PreferenceDTO preferenceToTest = DTOFactory.CreatePreferenceDto(1, "Test");
+            IList<PreferenceDTO> preferenceListToTest = new List<PreferenceDTO>();
+            preferenceListToTest.Add(preferenceToTest);
+            CountryDTO countryToTest = DTOFactory.CreateCountryDTO(1);
+
+            UserDTO userToTest = DTOFactory.CreateUserDto(0, "Nombre pruebaEdit", "Apellido prueba", "usernamePrueba",
+                "123456", "correo@correo.com", "1-555-555-555", UserGenderType.Male, UserStatusType.Banned,
+                countryToTest, preferenceListToTest);
+
+
+        }
+
+        [Test]
         public void SendFCMNotificationTest()
         {
-
+            
         }
     }
 }

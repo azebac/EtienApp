@@ -46,5 +46,16 @@ namespace EtienBackEnd.Controllers
             UserDTO resultUser = commandSearchUser.Param.ConvertToDTO();
             return Ok(resultUser);
         }
+
+        [HttpPost]
+        [Route("updateUser")]
+        public IHttpActionResult UpdateUser(UserDTO newData)
+        {
+            UserEntity userToUpdate = EntityFactory.CreateUserEntity(newData);
+            Command<UserEntity> commandUpdateUser = CommandFactory.GenerateUpdateUserCommand(userToUpdate);
+            commandUpdateUser.Execute();
+            UserDTO resultUser = commandUpdateUser.Param.ConvertToDTO();
+            return Ok(resultUser);
+        }
     }
 }
