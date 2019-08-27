@@ -3,6 +3,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Commands;
 using dtos;
 using entities;
@@ -16,6 +17,7 @@ namespace EtienBackEnd.Controllers
     /// login controller class for authenticate users
     /// </summary>
     [AllowAnonymous]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
@@ -58,8 +60,8 @@ namespace EtienBackEnd.Controllers
                 #region instrumentation
                 _log.ErrorFormat("Error en login de {0} producido por: {1}",login.UserName,e.InnerMessage);
                 #endregion
-
-                Unauthorized();
+                
+                return Content(HttpStatusCode.Unauthorized,"Bad Login");
             }
             catch (UsernameNotFoundException e)
             {
@@ -68,7 +70,47 @@ namespace EtienBackEnd.Controllers
                 _log.ErrorFormat("Error en login de {0} producido por: {1}", login.UserName, e.InnerMessage);
                 #endregion
 
-                Unauthorized();
+                return Content(HttpStatusCode.Unauthorized, "Bad Login");
+            }
+            return Ok(responseUser);
+        }
+
+
+        [HttpPost]
+        [Route("adminAuthenticate")]
+        public IHttpActionResult AdminAuthenticate(UserDTO login)
+        {
+
+            UserEntity userLogginIn = EntityFactory.CreateUserEntity(login);
+            string token = TokenGenerator.GenerateTokenJwt(login.UserName);
+            Command<UserEntity> loginCommand = CommandFactory.GenerateValidateLoginCommand(userLogginIn, token);
+            UserDTO responseUser = null;
+            try
+            {
+                loginCommand.Execute();
+                userLogginIn = loginCommand.Param;
+                if(!userLogginIn.IsAdmin && !userLogginIn.IsReseller)
+                    return Content(HttpStatusCode.Unauthorized, "Not Authorized");
+                responseUser = userLogginIn.ConvertToDTO();
+
+            }
+            catch (WrongPasswordException e)
+            {
+
+                #region instrumentation
+                _log.ErrorFormat("Error en login de {0} producido por: {1}", login.UserName, e.InnerMessage);
+                #endregion
+
+                return Content(HttpStatusCode.Unauthorized, "Bad Login");
+            }
+            catch (UsernameNotFoundException e)
+            {
+
+                #region instrumentation
+                _log.ErrorFormat("Error en login de {0} producido por: {1}", login.UserName, e.InnerMessage);
+                #endregion
+
+                return Content(HttpStatusCode.Unauthorized, "Bad Login");
             }
             return Ok(responseUser);
         }
