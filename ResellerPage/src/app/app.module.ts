@@ -44,6 +44,7 @@ import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { FcmComponent } from './views/fcm/fcm/fcm.component';
 
 @NgModule({
   imports: [
@@ -68,7 +69,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

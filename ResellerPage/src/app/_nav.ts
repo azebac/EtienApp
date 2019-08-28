@@ -39,21 +39,36 @@ export const navItems: NavData[] = [
     title: true,
     name: 'Administración'
   },
-  {
+  /*{
     name: 'Colors',
     url: '/theme/colors',
     icon: 'icon-drop'
-  },
+  },*/
   {
+    name: 'Enviar Notificacion',
+    url: '/base/fcm',
+    icon: 'cui-envelope-closed'
+  },
+  /*{
     name: 'Typography',
     url: '/theme/typography',
     icon: 'icon-pencil'
-  },
+  },*/
   {
     title: true,
-    name: 'Components'
+    name: 'Otros'
   },
   {
+    name: 'Consultar Usuarios',
+    url: '/users',
+    icon: 'cui-user'
+  },
+  {
+    name: 'Eventos',
+    url: '/events',
+    icon: 'cui-calendar'
+  }
+  /*{
     name: 'Base',
     url: '/base',
     icon: 'icon-puzzle',
@@ -251,5 +266,5 @@ export const navItems: NavData[] = [
       text: 'NEW'
     },
     attributes: { disabled: true },
-  }
+  }*/
 ];

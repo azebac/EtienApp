@@ -12,6 +12,7 @@ import { PaginationsComponent } from './paginations.component';
 import {PopoversComponent} from './popovers.component';
 import {ProgressComponent} from './progress.component';
 import {TooltipsComponent} from './tooltips.component';
+import { FcmComponent } from '../fcm/fcm/fcm.component';
 
 const routes: Routes = [
   {
@@ -99,6 +100,13 @@ const routes: Routes = [
         component: TooltipsComponent,
         data: {
           title: 'Tooltips'
+        }
+      },
+      {
+        path:'fcm',
+        component: FcmComponent,
+        data:{
+          title: 'Notificaciones'
         }
       }
     ]
