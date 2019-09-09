@@ -1,4 +1,6 @@
-﻿using Commands.Users;
+﻿using Commands.Notifications;
+using Commands.Users;
+using dtos;
 using entities;
 
 namespace Commands
@@ -33,6 +35,11 @@ namespace Commands
         public static UpdateUserCommand GenerateUpdateUserCommand(UserEntity NewData)
         {
             return new UpdateUserCommand(NewData);
+        }
+
+        public static SendMessageCommand GenerateSendMessageCommand(NotificationDTO message)
+        {
+            return new SendMessageCommand(message);
         }
     }
 }

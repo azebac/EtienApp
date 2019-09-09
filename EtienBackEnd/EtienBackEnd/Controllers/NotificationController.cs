@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Commands;
 using dtos;
 
 namespace EtienBackEnd.Controllers
@@ -10,6 +11,8 @@ namespace EtienBackEnd.Controllers
         [Route("send")]
         public IHttpActionResult SendNotification(NotificationDTO NotificationToSend)
         {
+            Command<bool> command = CommandFactory.GenerateSendMessageCommand(NotificationToSend);
+            command.Execute();
             return Ok(true);
         }
     }

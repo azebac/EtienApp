@@ -11,17 +11,24 @@ namespace entities
 
         public FCMMessage(NotificationDTO notificationToSend)
         {
+            notification = new Dictionary<string, string>();
+            data = new Dictionary<string, string>();
             notification.Add("title", notificationToSend.NotificationTitle);
             notification.Add("body",notificationToSend.NotificationBody);
-
-            foreach (CountryDTO country in notificationToSend.CountryList )
+            if (notificationToSend.CountryList != null)
             {
-                condition = condition + "'" + country.Name + "'" + " in topics || ";
+                foreach (CountryDTO country in notificationToSend.CountryList)
+                {
+                    condition = condition + "'" + country.Name + "'" + " in topics || ";
+                }
             }
 
-            foreach (PreferenceDTO preference in notificationToSend.PreferenceList)
+            if (notificationToSend.PreferenceList != null)
             {
-                condition = condition + "'" + preference.Name + "'" + " in topics || ";
+                foreach (PreferenceDTO preference in notificationToSend.PreferenceList)
+                {
+                    condition = condition + "'" + preference.Name + "'" + " in topics || ";
+                }
             }
 
             condition = condition.Remove(condition.Length - 4);

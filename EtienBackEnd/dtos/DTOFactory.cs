@@ -27,6 +27,11 @@ namespace dtos
                 cellphone, gender, status, country, selectedPreferences, appToken, userDeviceId);
         }
 
+        public static NotificationDTO CreateNotificationDto(IList<CountryDTO> countryList = null, IList<PreferenceDTO> preferenceList = null,
+            string notificationBody = null, string notificationTitle = null)
+        {
+            return new NotificationDTO(countryList, preferenceList, notificationBody,  notificationTitle);
+        }
         
     }
 }
