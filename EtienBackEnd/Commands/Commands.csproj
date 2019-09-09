@@ -35,6 +35,9 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -49,6 +52,7 @@
     <Compile Include="AsyncCommand.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandFactory.cs" />
+    <Compile Include="Notifications\SendMessageCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\CreateUserCommand.cs" />
     <Compile Include="Users\GetAllUsersCommand.cs" />
@@ -64,6 +68,10 @@
     <ProjectReference Include="..\daoNHibernate\daoNHibernate.csproj">
       <Project>{60F40432-0E7D-4993-8A64-4E67947EBAA4}</Project>
       <Name>daoNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dtos\dtos.csproj">
+      <Project>{6239E30F-FE4A-4883-A47E-49476F5698A8}</Project>
+      <Name>dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\entities\entities.csproj">
       <Project>{2a125d4d-82f8-4c65-baa1-dfde719ebcd2}</Project>
@@ -86,5 +94,6 @@
       <Name>resources</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

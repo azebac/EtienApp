@@ -26,5 +26,7 @@ namespace dtos
             return new UserDTO(id, name, lastName, userName, password, email,
                 cellphone, gender, status, country, selectedPreferences, appToken, userDeviceId);
         }
+
+        
     }
 }
