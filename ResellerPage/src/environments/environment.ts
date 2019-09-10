@@ -8,7 +8,9 @@ export const environment = {
   rest_path: {
     base:"http://localhost:53397/api",
     users:{
-      base: "/users",      
+      base: "/users",
+      getCountries:"/users/getCountries",
+      getPreferences:"/users/getPreferences"
     },
     login:{
       base:"/login",

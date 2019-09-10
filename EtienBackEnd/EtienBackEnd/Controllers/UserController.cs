@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Commands;
 using dtos;
 using entities;
@@ -7,6 +8,8 @@ using entities;
 namespace EtienBackEnd.Controllers
 {
     [RoutePrefix("api/users")]
+    [AllowAnonymous]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         [HttpPost]
@@ -58,7 +61,7 @@ namespace EtienBackEnd.Controllers
             return Ok(resultUser);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getCountries")]
         public IHttpActionResult GetAllUserCountries()
         {
@@ -67,7 +70,7 @@ namespace EtienBackEnd.Controllers
             return Ok(command.Param);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getPreferences")]
         public IHttpActionResult GetAllUserPreferences()
         {

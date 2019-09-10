@@ -1,12 +1,14 @@
 export const environment = {
-  production: true,
+  production: false,
   rest_path: {
-    base:"http://localhost:/api",
+    base:"http://localhost:53397/api",
     users:{
-      base: "/users",      
+      base: "/users",
+      getCountries:"/users/getCountries",
+      getPreferences:"/users/getPreferences"
     },
     login:{
-      base:"",
+      base:"/login",
       authenticate:"/login/adminAuthenticate"
     }
   }

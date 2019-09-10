@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<form (ngSubmit)="sendNotification()" class="animated fadeIn">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -10,40 +10,26 @@
                     <div class="form-group row col-sm-12">
                         <label for="multiple-select-country">Selecciona el/los paises a notificar</label>
                         <select id="multiple-select-contry" name="multiple-select-country" class="form-control" size="5"
-                            multiple>
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
-                            <option value="4">Option #4</option>
-                            <option value="5">Option #5</option>
-                            <option value="6">Option #6</option>
-                            <option value="7">Option #7</option>
-                            <option value="8">Option #8</option>
-                            <option value="9">Option #9</option>
-                            <option value="10">Option #10</option>
+                            multiple [(ngModel)]="selectedCountries">
+                            <option *ngFor="let country of countries" [ngValue]="country.id">{{country.Name}}</option>
                         </select>
                     </div>
                     <div class="form-group row col-sm-12">
                         <label for="multiple-select-interest">Selecciona el/los intereses a notificar</label>
                         <select id="multiple-select-interest" name="multiple-select-interest" class="form-control"
-                            size="5" multiple>
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
-                            <option value="4">Option #4</option>
-                            <option value="5">Option #5</option>
-                            <option value="6">Option #6</option>
-                            <option value="7">Option #7</option>
-                            <option value="8">Option #8</option>
-                            <option value="9">Option #9</option>
-                            <option value="10">Option #10</option>
+                            size="5" multiple [(ngModel)]="selectedPreferences">
+                            <option *ngFor="let preference of preferences" [ngValue]="preference.id">{{preference.Name}}</option>
                         </select>
+                    </div>
+                    <div class="form-group row col-sm-12">
+                        <label for="title">Título de la notificación</label>
+                        <input type="text" class="form-control" id="title" placeholder="Título" ([ngModel])="messageTitle">
                     </div>
                     <div class="form-group row col-sm-12">
                         <label for="textarea-input">Mensaje de la notificacion</label>
 
                         <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
-                            placeholder="Notificación!"></textarea>
+                            placeholder="Notificación!" ([ngModel])="messageToSend"></textarea>
 
                     </div>
                 </div>
@@ -55,4 +41,4 @@
             </div>
         </div>
     </div>
-</div>
+</form>

@@ -26,6 +26,20 @@ export class UserService extends BaseService {
     );
    }
 
+   public getClientsPreferences():Observable<any>{
+     return this.httpService.get(environment.rest_path.base+environment.rest_path.users.getPreferences,this.httpOptions).pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );   
+   }
+
+   public getClientsCountries():Observable<any>{
+    return this.httpService.get(environment.rest_path.base+environment.rest_path.users.getCountries,this.httpOptions).pipe(
+     retry(1),
+     catchError(this.errorHandl)
+   );   
+  }
+
    public get currentUserValue(): User {
     return this.currentUserSubject.value;
    }

@@ -20,7 +20,7 @@ export class Base {
 
 	constructor(data?) {
         if(data){
-        this.id = data.id || 0;
+        this.id = data.Id || 0;
         }
 	}
 
