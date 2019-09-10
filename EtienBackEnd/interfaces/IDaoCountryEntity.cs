@@ -1,6 +1,8 @@
-﻿namespace interfaces
+﻿using entities;
+
+namespace interfaces
 {
-    public interface IDaoCountryEntity
+    public interface IDaoCountryEntity:IBaseDao<CountryEntity>
     {
         
     }

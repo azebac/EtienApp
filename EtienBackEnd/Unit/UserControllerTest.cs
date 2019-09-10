@@ -79,9 +79,25 @@ namespace Unit
         }
 
         [Test]
-        public void SendFCMNotificationTest()
+        public void GetUserCountriesTest()
         {
-            
+            UserController controller = new UserController();
+            IHttpActionResult result = controller.GetAllUserCountries();
+            OkNegotiatedContentResult<IList<CountryDTO>> contentResult =
+                result as OkNegotiatedContentResult<IList<CountryDTO>>;
+            Assert.NotZero(contentResult.Content.Count);
+
+        }
+
+        [Test]
+        public void GetPreferencesTest()
+        {
+            UserController controller = new UserController();
+            IHttpActionResult result = controller.GetAllUserPreferences();
+            OkNegotiatedContentResult<IList<PreferenceDTO>> contentResult =
+                result as OkNegotiatedContentResult<IList<PreferenceDTO>>;
+            Assert.NotZero(contentResult.Content.Count);
+
         }
     }
 }

@@ -41,5 +41,15 @@ namespace Commands
         {
             return new SendMessageCommand(message);
         }
+
+        public static GetUsersCountriesCommand GenerateGetUsersCountriesCommand()
+        {
+            return new GetUsersCountriesCommand();
+        }
+
+        public static GetUsersPreferencesCommand GenerateGetUsersPreferencesCommand()
+        {
+            return new GetUsersPreferencesCommand();
+        }
     }
 }

@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="DaoNHbiernateFactory.cs" />
     <Compile Include="implementation\BaseDao.cs" />
+    <Compile Include="implementation\CountryEntityDao.cs" />
     <Compile Include="implementation\FluentNHibernateHelper.cs" />
     <Compile Include="implementation\PreferenceEntityDao.cs" />
     <Compile Include="implementation\UserEntityDao.cs" />

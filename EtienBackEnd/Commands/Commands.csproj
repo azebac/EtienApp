@@ -58,6 +58,8 @@
     <Compile Include="Users\CreateUserCommand.cs" />
     <Compile Include="Users\GetAllUsersCommand.cs" />
     <Compile Include="Users\GetUserByIdCommand.cs" />
+    <Compile Include="Users\GetUsersCountriesCommand.cs" />
+    <Compile Include="Users\GetUsersPreferencesCommand.cs" />
     <Compile Include="Users\SearchUserNicknameCommand.cs" />
     <Compile Include="Users\UpdateUserCommand.cs" />
     <Compile Include="Users\ValidateLoginCommand.cs" />

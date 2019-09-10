@@ -57,5 +57,23 @@ namespace EtienBackEnd.Controllers
             UserDTO resultUser = commandUpdateUser.Param.ConvertToDTO();
             return Ok(resultUser);
         }
+
+        [HttpPost]
+        [Route("getCountries")]
+        public IHttpActionResult GetAllUserCountries()
+        {
+            Command<IList<CountryDTO>> command = CommandFactory.GenerateGetUsersCountriesCommand();
+            command.Execute();
+            return Ok(command.Param);
+        }
+
+        [HttpPost]
+        [Route("getPreferences")]
+        public IHttpActionResult GetAllUserPreferences()
+        {
+            Command<IList<PreferenceDTO>> command = CommandFactory.GenerateGetUsersPreferencesCommand();
+            command.Execute();
+            return Ok(command.Param);
+        }
     }
 }

@@ -14,5 +14,10 @@ namespace daoNHibernate
         {
             return new PreferenceEntityDao(GlobalRegistry.GetInstance().Session);
         }
+
+        public static CountryEntityDao FabricateCountryEntityDao()
+        {
+            return new CountryEntityDao(GlobalRegistry.GetInstance().Session);
+        }
     }
 }
