@@ -11,25 +11,25 @@
                         <label for="multiple-select-country">Selecciona el/los paises a notificar</label>
                         <select id="multiple-select-contry" name="multiple-select-country" class="form-control" size="5"
                             multiple [(ngModel)]="selectedCountries">
-                            <option *ngFor="let country of countries" [ngValue]="country.id">{{country.Name}}</option>
+                            <option *ngFor="let country of countries" [ngValue]="country.ISO3">{{country.Name}}</option>
                         </select>
                     </div>
                     <div class="form-group row col-sm-12">
                         <label for="multiple-select-interest">Selecciona el/los intereses a notificar</label>
                         <select id="multiple-select-interest" name="multiple-select-interest" class="form-control"
                             size="5" multiple [(ngModel)]="selectedPreferences">
-                            <option *ngFor="let preference of preferences" [ngValue]="preference.id">{{preference.Name}}</option>
+                            <option *ngFor="let preference of preferences" [ngValue]="preference.Name">{{preference.Name}}</option>
                         </select>
                     </div>
                     <div class="form-group row col-sm-12">
                         <label for="title">Título de la notificación</label>
-                        <input type="text" class="form-control" id="title" placeholder="Título" ([ngModel])="messageTitle">
+                        <input type="text" class="form-control" name="message-title" id="title" placeholder="Título" [(ngModel)]="messageTitle">
                     </div>
                     <div class="form-group row col-sm-12">
                         <label for="textarea-input">Mensaje de la notificacion</label>
 
                         <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
-                            placeholder="Notificación!" ([ngModel])="messageToSend"></textarea>
+                            placeholder="Notificación!" [(ngModel)]="messageToSend"></textarea>
 
                     </div>
                 </div>
@@ -42,3 +42,23 @@
         </div>
     </div>
 </form>
+
+<div bsModal #smallModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Notificación Enviada!</h4>
+                <button type="button" class="close" (click)="smallModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tu notificación ha sido enviada.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="smallModal.hide()">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

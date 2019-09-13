@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   rest_path: {
     base:"http://localhost:53397/api",
     users:{
@@ -10,6 +10,10 @@ export const environment = {
     login:{
       base:"/login",
       authenticate:"/login/adminAuthenticate"
+    },
+    notification:{
+      base:"/notification",
+      sendNotification:"/notification/send"
     }
   }
 };

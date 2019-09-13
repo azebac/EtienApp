@@ -1,9 +1,11 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { UserService } from '../../../shared/user.service';
 import { Router } from '@angular/router';
 import { Country } from '../../../models/country';
 import { Preference } from '../../../models/preference';
-
+import {Notification} from '../../../models/notification'
+import { NotificationService } from '../../../shared/notification.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-fcm',
   templateUrl: './fcm.component.html',
@@ -12,12 +14,14 @@ import { Preference } from '../../../models/preference';
 export class FcmComponent implements OnInit {
 
   private userService: UserService = this.injector.get(UserService);
+  private fcmService : NotificationService = this.injector.get(NotificationService);
+  @ViewChild('smallModal', {static: false}) public smallModal: ModalDirective;
   public countries: Country[] = [];
   public preferences: Preference[] = [];
   public selectedPreferences: any;
   public selectedCountries: any;
-  public messageToSend: string;
-  public messageTitle: string;
+  public messageToSend: string ="";
+  public messageTitle: string ="";
 
 
   constructor(public injector: Injector) { }
@@ -41,8 +45,24 @@ export class FcmComponent implements OnInit {
   }
 
   sendNotification(){
-    console.log(this.selectedPreferences);
-    console.log(this.selectedCountries);
+    let preferencesToNotify = [];
+    let countriesToNotify = [];
+    this.selectedPreferences.forEach(element => {
+      let selectedPreference = new Preference();
+      selectedPreference.$Name = element;
+      preferencesToNotify.push(selectedPreference);
+    });
+    this.selectedCountries.forEach(element => {
+      let selectedCountry = new Country();
+      selectedCountry.$ISO3 = element;
+      countriesToNotify.push(selectedCountry);
+    });
+    let notificationToSend = new Notification();
+    notificationToSend.$CountryList = countriesToNotify;
+    notificationToSend.$PreferenceList = preferencesToNotify;
+    notificationToSend.$NotificationTitle = this.messageTitle;
+    notificationToSend.$NotificationBody = this.messageToSend;
+    this.fcmService.sendNotification(notificationToSend).subscribe(res=>{console.log(res);this.smallModal.show()});
   }
 
 }

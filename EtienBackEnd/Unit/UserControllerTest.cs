@@ -15,7 +15,7 @@ namespace Unit
         [Test]
         public void CreateUserTest()
         {
-            PreferenceDTO preferenceToTest = DTOFactory.CreatePreferenceDto(1,"Test");
+            PreferenceDTO preferenceToTest = DTOFactory.CreatePreferenceDto(1, "promociones");
             IList<PreferenceDTO> preferenceListToTest = new List<PreferenceDTO>();
             preferenceListToTest.Add(preferenceToTest);
             CountryDTO countryToTest = DTOFactory.CreateCountryDTO(1);

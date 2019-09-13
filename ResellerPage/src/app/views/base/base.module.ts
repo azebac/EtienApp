@@ -47,6 +47,8 @@ import { TooltipsComponent } from './tooltips.component';
 import { BaseRoutingModule } from './base-routing.module';
 import { FcmComponent } from '../fcm/fcm/fcm.component';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { FcmComponent } from '../fcm/fcm/fcm.component';
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   declarations: [
     CardsComponent,

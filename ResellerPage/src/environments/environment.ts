@@ -15,6 +15,10 @@ export const environment = {
     login:{
       base:"/login",
       authenticate:"/login/adminAuthenticate"
+    },
+    notification:{
+      base:"/notification",
+      sendNotification:"/notification/send"
     }
   }
 };
