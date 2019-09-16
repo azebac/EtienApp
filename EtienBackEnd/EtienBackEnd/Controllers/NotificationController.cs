@@ -11,9 +11,9 @@ namespace EtienBackEnd.Controllers
     {
         [HttpPost]
         [Route("send")]
-        public IHttpActionResult SendNotification(NotificationDTO NotificationToSend)
+        public IHttpActionResult SendNotification(NotificationDTO notificationToSend)
         {
-            Command<bool> command = CommandFactory.GenerateSendMessageCommand(NotificationToSend);
+            Command<bool> command = CommandFactory.GenerateSendMessageCommand(notificationToSend);
             command.Execute();
             return Ok(true);
         }

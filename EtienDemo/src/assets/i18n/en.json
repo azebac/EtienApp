@@ -7,6 +7,10 @@
             "BTN_ES": "Spanish",
             "BTN_EN": "English"
           },
+          "NOTIFICATION":{
+            "TITLE_PAGE":"Notification",
+            "TITLE":"Attention"
+          },
           "EVENT":{
               "TITLE_PAGE":"Event!",
               "TITLE":"Attention",

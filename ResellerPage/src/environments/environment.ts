@@ -10,7 +10,10 @@ export const environment = {
     users:{
       base: "/users",
       getCountries:"/users/getCountries",
-      getPreferences:"/users/getPreferences"
+      getPreferences:"/users/getPreferences",
+      getAllUsers:"/users/getUsers",
+      getSpecificUser:"/users/consultUserById",
+      updateUser:"/users/updateUser"
     },
     login:{
       base:"/login",

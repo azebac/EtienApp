@@ -14,12 +14,12 @@ namespace entities
             notification = new Dictionary<string, string>();
             data = new Dictionary<string, string>();
             notification.Add("title", notificationToSend.NotificationTitle);
-            notification.Add("body",notificationToSend.NotificationBody);
+            notification.Add("body",notificationToSend.NotificationSubtitle);
             if (notificationToSend.CountryList != null)
             {
-                foreach (CountryDTO country in notificationToSend.CountryList)
+                foreach (string country in notificationToSend.CountryList)
                 {
-                    condition = condition + "'" + country.Name + "'" + " in topics || ";
+                    condition = condition + "'" + country + "'" + " in topics || ";
                 }
             }
 
@@ -30,6 +30,9 @@ namespace entities
                     condition = condition + "'" + preference.Name + "'" + " in topics || ";
                 }
             }
+
+            data.Add("landing_page", "promocion");
+            data.Add("message",notificationToSend.NotificationBody);
 
             condition = condition.Remove(condition.Length - 4);
         }

@@ -22,6 +22,7 @@ export class FcmComponent implements OnInit {
   public selectedCountries: any;
   public messageToSend: string ="";
   public messageTitle: string ="";
+  public messageSubTitle: string ="";
 
 
   constructor(public injector: Injector) { }
@@ -53,15 +54,15 @@ export class FcmComponent implements OnInit {
       preferencesToNotify.push(selectedPreference);
     });
     this.selectedCountries.forEach(element => {
-      let selectedCountry = new Country();
-      selectedCountry.$ISO3 = element;
-      countriesToNotify.push(selectedCountry);
+      countriesToNotify.push(element.$ISO3);
     });
     let notificationToSend = new Notification();
     notificationToSend.$CountryList = countriesToNotify;
     notificationToSend.$PreferenceList = preferencesToNotify;
     notificationToSend.$NotificationTitle = this.messageTitle;
+    notificationToSend.$NotificationSubtitle = this.messageSubTitle;
     notificationToSend.$NotificationBody = this.messageToSend;
+    console.log(notificationToSend);
     this.fcmService.sendNotification(notificationToSend).subscribe(res=>{console.log(res);this.smallModal.show()});
   }
 

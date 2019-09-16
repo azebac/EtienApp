@@ -48,6 +48,9 @@ import { BaseRoutingModule } from './base-routing.module';
 import { FcmComponent } from '../fcm/fcm/fcm.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -62,7 +65,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DataTablesModule
   ],
   declarations: [
     CardsComponent,
@@ -76,7 +80,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PopoversComponent,
     ProgressComponent,
     TooltipsComponent,
-    FcmComponent
+    FcmComponent,
+    UsuariosComponent
   ]
 })
 export class BaseModule { }

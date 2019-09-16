@@ -24,8 +24,8 @@ namespace EtienBackEnd.Controllers
             commandRegisterUser.Execute();
             return Ok(userToRegister);
         }
-
-        [HttpPost]
+        
+        [HttpGet]
         [Route("getUsers")]
         public IHttpActionResult GetAllUsers()
         {
@@ -54,8 +54,18 @@ namespace EtienBackEnd.Controllers
         [Route("updateUser")]
         public IHttpActionResult UpdateUser(UserDTO newData)
         {
+
+
+
             UserEntity userToUpdate = EntityFactory.CreateUserEntity(newData);
-            Command<UserEntity> commandUpdateUser = CommandFactory.GenerateUpdateUserCommand(userToUpdate);
+
+            
+            Command<UserEntity> commandGetUserOldData = CommandFactory.GenerateGetUserByIdCommand(userToUpdate);
+            commandGetUserOldData.Execute();
+            UserEntity oldUserData = commandGetUserOldData.Param;
+            oldUserData = EntityFactory.CreateUserEntityForUpdate(newData, oldUserData);
+
+            Command<UserEntity> commandUpdateUser = CommandFactory.GenerateUpdateUserCommand(oldUserData);
             commandUpdateUser.Execute();
             UserDTO resultUser = commandUpdateUser.Param.ConvertToDTO();
             return Ok(resultUser);

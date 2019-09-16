@@ -29,6 +29,28 @@ namespace entities
             return new UserEntity(dto);
         }
 
+        public static UserEntity CreateUserEntityForUpdate(UserDTO dto, UserEntity user)
+        {
+            user.Name = dto.Name;
+            user.LastName = dto.LastName;
+            user.UserName = dto.UserName;
+            user.Password = dto.Password;
+            user.Email = dto.Email;
+            user.UserDeviceId = dto.UserDeviceId;
+            user.Cellphone = dto.Cellphone;
+            user.AppToken = dto.AppToken;
+            user.Status = dto.Status;
+            user.Gender = dto.Gender;
+            user.Country = CreateCountryEntity(dto.Country);
+            user.SelectedPreferences = new List<PreferenceEntity>();
+            foreach (PreferenceDTO preference in dto.SelectedPreferences)
+            {
+                user.SelectedPreferences.Add(CreatePreferenceEntity(preference));
+            }
+
+            return user;
+        }
+
 
 
         public static CountryEntity CreateCountryEntity(long id = 0, string name = null, string iso = null,
@@ -37,6 +59,16 @@ namespace entities
         {
             return new CountryEntity(id, name, iso, niceName, iso3, numCode, phoneCode,
                 associatedUsers);
+        }
+
+        public static CountryEntity CreateCountryEntity(CountryDTO country)
+        {
+            return new CountryEntity(country);
+        }
+
+        public static PreferenceEntity CreatePreferenceEntity(PreferenceDTO preference)
+        {
+            return new PreferenceEntity(preference);
         }
     }
 }

@@ -60,7 +60,7 @@ export const navItems: NavData[] = [
   },
   {
     name: 'Consultar Usuarios',
-    url: '/users',
+    url: '/base/usuarios',
     icon: 'cui-user'
   },
   {

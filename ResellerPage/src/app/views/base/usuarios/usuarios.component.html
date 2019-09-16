@@ -1,0 +1,90 @@
+<table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Nickname</th>
+        <th>Nombre(s)</th>
+        <th>Apellido(s)</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>País</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="userList?.length!=0">
+      <tr *ngFor="let user of userList">
+        <td>{{user.UserName}}</td>
+        <td>{{user.Name}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.Cellphone}}</td>
+        <td>{{user.Country.NiceName}}</td>
+        <td>
+          <button *ngIf="user.Status == 1" type="button" (click)="setUserToBan(user)" class="btn btn-block btn-danger active">Banear</button>
+          <button *ngIf="user.Status == 2" type="button" (click)="setUserToActivate(user)" class="btn btn-block btn-success active">Activar</button>
+          <button aria-pressed="true" class="btn btn-block btn-primary active" (click)="setDetailingUser(user)" type="button">Ver Preferencias</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div bsModal #smallModalDetail="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Preferencias de {{detailingUser.UserName}}</h4>
+          <button type="button" class="close" (click)="smallModalDetail.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p *ngFor="let preference of detailingUser.SelectedPreferences">- {{preference.Name}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="smallModalDetail.hide()">Cerrar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  <div bsModal #smallModalBan="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmación</h4>
+        <button type="button" class="close" (click)="smallModalBan.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deseas banear al usuario {{userToBan.UserName}}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="banUser()">Banear</button>
+        <button type="button" class="btn btn-primary" (click)="smallModalBan.hide()">Cerrar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<div bsModal #smallModalActivate="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Confirmación</h4>
+      <button type="button" class="close" (click)="smallModalActivate.hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Deseas activar al usuario {{userToActivate.UserName}}?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="activateUser()">Activar</button>
+      <button type="button" class="btn btn-primary" (click)="smallModalActivate.hide()">Cerrar</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>

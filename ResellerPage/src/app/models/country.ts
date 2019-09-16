@@ -1,13 +1,12 @@
 import { Base } from './base';
-import { ThemeService } from 'ng2-charts';
 
 export class Country extends Base {
     private Name:string;
     private ISO: string;
     private NiceName: string;
     private ISO3: string;
-    private NumCode: string;
-    private PhoneCode:string;
+    private NumCode: number;
+    private PhoneCode:number;
 
 
     /**
@@ -43,22 +42,6 @@ export class Country extends Base {
 	}
 
     /**
-     * Getter $NumCode
-     * @return {string}
-     */
-	public get $NumCode(): string {
-		return this.NumCode;
-	}
-
-    /**
-     * Getter $PhoneCode
-     * @return {string}
-     */
-	public get $PhoneCode(): string {
-		return this.PhoneCode;
-	}
-
-    /**
      * Setter $Name
      * @param {string} value
      */
@@ -88,24 +71,41 @@ export class Country extends Base {
      */
 	public set $ISO3(value: string) {
 		this.ISO3 = value;
+    }
+    
+
+    /**
+     * Getter $NumCode
+     * @return {number}
+     */
+	public get $NumCode(): number {
+		return this.NumCode;
+	}
+
+    /**
+     * Getter $PhoneCode
+     * @return {number}
+     */
+	public get $PhoneCode(): number {
+		return this.PhoneCode;
 	}
 
     /**
      * Setter $NumCode
-     * @param {string} value
+     * @param {number} value
      */
-	public set $NumCode(value: string) {
+	public set $NumCode(value: number) {
 		this.NumCode = value;
 	}
 
     /**
      * Setter $PhoneCode
-     * @param {string} value
+     * @param {number} value
      */
-	public set $PhoneCode(value: string) {
+	public set $PhoneCode(value: number) {
 		this.PhoneCode = value;
-    }
-    
+	}
+
 
 	constructor(data?) {
         super(data);
@@ -114,8 +114,8 @@ export class Country extends Base {
         this.ISO = data.ISO || "";
         this.NiceName = data.NiceName || "";
         this.ISO3 = data.ISO3 || "";
-        this.NumCode = data.NumCode || "";
-        this.PhoneCode = data.PhoneCode || "";
+        this.NumCode = data.NumCode || 0;
+        this.PhoneCode = data.PhoneCode || 0;
         }
     }
 

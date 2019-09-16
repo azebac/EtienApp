@@ -84,8 +84,7 @@ namespace entities
                 }
             }
 
-            CountryDTO country = null;
-            Country?.ConvertToDTO();
+            CountryDTO country = Country != null ? Country.ConvertToDTO() : DTOFactory.CreateCountryDTO(); 
             UserDTO userDto = DTOFactory.CreateUserDto(Id, Name, LastName, UserName, "", Email, Cellphone, Gender,
                 Status, country, preferences, AppToken, UserDeviceId);
             return userDto;

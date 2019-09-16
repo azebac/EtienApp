@@ -11,7 +11,7 @@
                         <label for="multiple-select-country">Selecciona el/los paises a notificar</label>
                         <select id="multiple-select-contry" name="multiple-select-country" class="form-control" size="5"
                             multiple [(ngModel)]="selectedCountries">
-                            <option *ngFor="let country of countries" [ngValue]="country.ISO3">{{country.Name}}</option>
+                            <option *ngFor="let country of countries" [ngValue]="country">{{country.Name}}</option>
                         </select>
                     </div>
                     <div class="form-group row col-sm-12">
@@ -26,7 +26,13 @@
                         <input type="text" class="form-control" name="message-title" id="title" placeholder="Título" [(ngModel)]="messageTitle">
                     </div>
                     <div class="form-group row col-sm-12">
-                        <label for="textarea-input">Mensaje de la notificacion</label>
+                        <label for="subtitle">Subtítulo de la notificacion</label>
+
+                        <input type="text" class="form-control" name="message-subtitle" id="subtitle" placeholder="Subtítulo" [(ngModel)]="messageSubTitle">
+
+                    </div>
+                    <div class="form-group row col-sm-12">
+                        <label for="textarea-input">Mensaje de la notificación</label>
 
                         <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
                             placeholder="Notificación!" [(ngModel)]="messageToSend"></textarea>

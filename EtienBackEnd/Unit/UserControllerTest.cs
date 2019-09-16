@@ -20,8 +20,8 @@ namespace Unit
             preferenceListToTest.Add(preferenceToTest);
             CountryDTO countryToTest = DTOFactory.CreateCountryDTO(1);
 
-            UserDTO userToTest = DTOFactory.CreateUserDto(0, "Nombre prueba", "Apellido prueba", "usernamePrueba",
-                "123456", "correo@correo.com", "1-555-555-555", UserGenderType.Male, UserStatusType.Active,
+            UserDTO userToTest = DTOFactory.CreateUserDto(0, "Nombre prueba", "Apellido prueba", "usernamePrueba2",
+                "123456", "correo2@correo.com", "555555", UserGenderType.Male, UserStatusType.Active,
                 countryToTest, preferenceListToTest);
             UserController controller = new UserController();
            IHttpActionResult result = controller.RegisterUser(userToTest);

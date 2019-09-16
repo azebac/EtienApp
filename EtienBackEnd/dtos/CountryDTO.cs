@@ -20,9 +20,8 @@
             PhoneCode = phoneCode;
         }
 
-        public CountryDTO(long id, string name) : base(id)
+        public CountryDTO()
         {
-            Name = name;
         }
     }
 }

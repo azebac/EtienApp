@@ -5,7 +5,7 @@ export class Base {
      * @return {number}
      */
 	public get $id(): number {
-		return this.id;
+		return this.Id;
 	}
 
     /**
@@ -13,14 +13,14 @@ export class Base {
      * @param {number} value
      */
 	public set $id(value: number) {
-		this.id = value;
+		this.Id = value;
 	}
-    private id: number;
+    private Id: number;
 
 
 	constructor(data?) {
         if(data){
-        this.id = data.Id || 0;
+        this.Id = data.Id || 0;
         }
 	}
 

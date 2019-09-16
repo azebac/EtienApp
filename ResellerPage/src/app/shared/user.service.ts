@@ -19,6 +19,13 @@ export class UserService extends BaseService {
     this.currentUser = this.currentUserSubject.asObservable();
    }
 
+   public getAllUsers():Observable<any>{
+    return this.httpService.get(environment.rest_path.base+environment.rest_path.users.getAllUsers,this.httpOptions).pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );   
+   }
+
    public validateLogin(user:User):Observable<any>{
     return this.httpService.post(environment.rest_path.base+environment.rest_path.login.authenticate,JSON.stringify(user),this.httpOptions).pipe(
       retry(1),
@@ -38,6 +45,13 @@ export class UserService extends BaseService {
      retry(1),
      catchError(this.errorHandl)
    );   
+  }
+
+  public updateUser(user):Observable<any>{
+    return this.httpService.post(environment.rest_path.base+environment.rest_path.users.updateUser,JSON.stringify(user),this.httpOptions).pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
   }
 
    public get currentUserValue(): User {

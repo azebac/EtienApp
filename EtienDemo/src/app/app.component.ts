@@ -62,6 +62,7 @@ export class AppComponent {
 
 
         var params = {
+          message: data.message,
           country: data.country,
           percent: data.percent 
         }

@@ -13,6 +13,7 @@ import {PopoversComponent} from './popovers.component';
 import {ProgressComponent} from './progress.component';
 import {TooltipsComponent} from './tooltips.component';
 import { FcmComponent } from '../fcm/fcm/fcm.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -107,6 +108,13 @@ const routes: Routes = [
         component: FcmComponent,
         data:{
           title: 'Notificaciones'
+        }
+      },
+      {
+        path:'usuarios',
+        component: UsuariosComponent,
+        data:{
+          title: 'Administración de usuarios'
         }
       }
     ]

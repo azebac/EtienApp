@@ -14,7 +14,7 @@ export class User extends Base {
     private Status: number;
     private AppToken: string;
     private Country: Country;
-    private Preferences: Preference[] = [];
+    private SelectedPreferences: Preference[] = [];
 
     constructor(data?) {
         super(data);
@@ -30,14 +30,14 @@ export class User extends Base {
             this.Status = data.Status || 1;
             this.Country = data.Country || null;
             this.AppToken = data.AppToken || "";
-            if (data.Preferences != undefined) {
-                data.Preferences.forEach(element => {
+            if (data.SelectedPreferences != undefined) {
+                data.SelectedPreferences.forEach(element => {
                     let preference = new Preference(element);
-                    this.Preferences.push(preference);
+                    this.SelectedPreferences.push(preference);
                 });
             }
             else {
-                this.Preferences = [];
+                this.SelectedPreferences = [];
             }
         }
     }
@@ -124,11 +124,11 @@ export class User extends Base {
     }
 
     /**
-     * Getter $Preferences
+     * Getter $SelectedPreferences
      * @return {Preference[] }
      */
-    public get $Preferences(): Preference[] {
-        return this.Preferences;
+    public get $SelectedPreferences(): Preference[] {
+        return this.SelectedPreferences;
     }
 
     /**
@@ -212,11 +212,11 @@ export class User extends Base {
     }
 
     /**
-     * Setter $Preferences
+     * Setter $SelectedPreferences
      * @param {Preference[] } value
      */
-    public set $Preferences(value: Preference[]) {
-        this.Preferences = value;
+    public set $SelectedPreferences(value: Preference[]) {
+        this.SelectedPreferences = value;
     }
 
 

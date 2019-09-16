@@ -3,6 +3,7 @@ import { Preference } from './preference';
 
 export class Notification {
     private NotificationTitle:string;
+    private NotificationSubtitle:string;
     private NotificationBody:string;
     private CountryList: Country[] = [];
     private PreferenceList: Preference[] = [];
@@ -70,6 +71,23 @@ export class Notification {
      */
 	public set $PreferenceList(value: Preference[] ) {
 		this.PreferenceList = value;
+    }
+    
+
+    /**
+     * Getter $NotificationSubtitle
+     * @return {string}
+     */
+	public get $NotificationSubtitle(): string {
+		return this.NotificationSubtitle;
+	}
+
+    /**
+     * Setter $NotificationSubtitle
+     * @param {string} value
+     */
+	public set $NotificationSubtitle(value: string) {
+		this.NotificationSubtitle = value;
 	}
 
 }
