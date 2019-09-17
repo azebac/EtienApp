@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { NavigationParamsService } from '../shared/navigation-params.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +14,39 @@ export class HomePage {
   postsToShow = [];
   currentPage = 1;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private fcm: FCM,
+    private navParams: NavigationParamsService,
+    private _translate: TranslateService,
+    private router: Router) {
     this.doInfinite();
+    
+
+    this.getFCMToken();
+
+    this.fcm.subscribeToTopic('promociones');
+
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });
+
+    this.fcm.onNotification().subscribe(data => {
+      console.log(data);
+      var params = {
+        message: data.message,
+        country: data.country,
+        percent: data.percent 
+      }
+      this.navParams.setExtras(params);
+
+      if (data.wasTapped) {
+        console.log('Received in background');
+        this.router.navigate([data.landing_page]);
+      } else {
+        console.log('Received in foreground');
+        this.router.navigate([data.landing_page]);
+      }
+    });
   }
 
   doInfinite(): Promise<any> {
@@ -33,5 +68,19 @@ export class HomePage {
     result = result.replace(/\[&hellip;\]/g,'');
     result = result + "...";
     return result;
+  }
+
+  
+  getFCMToken() {
+    this.fcm.getToken().then(token => {
+      if (token == null) {
+        setTimeout(this.getFCMToken, 1000);
+      }
+      else {
+
+      }
+    }, e => {
+      console.log(e);
+    });
   }
 }

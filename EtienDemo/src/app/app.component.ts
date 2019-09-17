@@ -8,6 +8,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 import { NavigationParamsService } from './shared/navigation-params.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthenticationService } from './services/Authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,8 @@ export class AppComponent {
     private fcm: FCM,
     private navParams: NavigationParamsService,
     private _translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
     this.initializeApp();
 
@@ -48,48 +50,16 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-
-      this.getFCMToken();
-
-      this.fcm.subscribeToTopic('promociones');
-
-      this.fcm.onTokenRefresh().subscribe(token => {
-        console.log(token);
-      });
-
-      this.fcm.onNotification().subscribe(data => {
-        console.log(data);
-
-
-        var params = {
-          message: data.message,
-          country: data.country,
-          percent: data.percent 
-        }
-        this.navParams.setExtras(params);
-
-        if (data.wasTapped) {
-          console.log('Received in background');
-          this.router.navigate([data.landing_page]);
+      this.authenticationService.authState.subscribe(state => {
+        if (state) {
+          this.router.navigate(['home']);
         } else {
-          console.log('Received in foreground');
-          this.router.navigate([data.landing_page]);
+          this.router.navigate(['login']);
         }
       });
+
     });
   }
 
-  getFCMToken() {
-    this.fcm.getToken().then(token => {
-      if (token == null) {
-        setTimeout(this.getFCMToken, 1000);
-      }
-      else {
-
-      }
-    }, e => {
-      console.log(e);
-    });
-  }
 
 }
