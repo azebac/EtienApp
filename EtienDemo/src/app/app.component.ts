@@ -51,11 +51,11 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.authenticationService.authState.subscribe(state => {
-        if (state) {
+        /*if (state) {
           this.router.navigate(['home']);
         } else {
           this.router.navigate(['login']);
-        }
+        }*/
       });
 
     });

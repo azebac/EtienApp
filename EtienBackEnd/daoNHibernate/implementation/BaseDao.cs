@@ -83,6 +83,7 @@ namespace daoNHibernate.implementation
             try
             {
                 _session.SaveOrUpdate(entity);
+                
                 _session.Flush();
             }
             catch (PropertyValueException e)

@@ -17,9 +17,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/Authentication.service';
 import { IonicStorageModule } from '@ionic/storage';
+import { UserService } from './services/user.service';
+
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { Uid } from '@ionic-native/uid/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { CommonDirectiveDirective } from './common-directive.directive';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CommonDirectiveDirective],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -39,8 +46,13 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     FCM,
+    UniqueDeviceID,
+    Uid,
+    AndroidPermissions,
+    CommonDirectiveDirective,
     AuthGuardService,
     AuthenticationService,
+    UserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

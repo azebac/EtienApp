@@ -6,49 +6,55 @@
           <ion-card-header>
             <ion-card-title>Registro</ion-card-title>
           </ion-card-header>
-          <form #form="ngForm" (ngSubmit)="login(form)">
+          <form #form="ngForm" (ngSubmit)="registerUser()">
             <ion-list>
   
               <ion-item>
                 <ion-label position="floating" color="primary">Usuario</ion-label>
-                <ion-input type="text" ngModel required name="UserName"></ion-input>
+                <ion-input type="text" ngModel required name="UserName" [(ngModel)]="userToRegister.UserName"></ion-input>
               </ion-item>
   
               <ion-item>
                 <ion-label position="floating" color="primary">Password</ion-label>
-                <ion-input type="password" ngModel required name="PassWord"></ion-input>
+                <ion-input type="password" ngModel required name="PassWord" [(ngModel)]="userToRegister.PassWord"></ion-input>
               </ion-item>
 
               <ion-item>
                 <ion-label position="floating" color="primary">Nombre</ion-label>
-                <ion-input type="text" ngModel required name="Nombre"></ion-input>
+                <ion-input type="text" ngModel required name="Nombre" [(ngModel)]="userToRegister.Name"></ion-input>
               </ion-item>
               
               <ion-item>
                 <ion-label position="floating" color="primary">Apellido</ion-label>
-                <ion-input type="text" ngModel required name="Apellido"></ion-input>
+                <ion-input type="text" ngModel required name="Apellido" [(ngModel)]="userToRegister.LastName"></ion-input>
               </ion-item>
               
               <ion-item>
                 <ion-label position="floating" color="primary">Correo</ion-label>
-                <ion-input type="text" ngModel required name="Correo"></ion-input>
+                <ion-input type="text" ngModel required name="Correo" [(ngModel)]="userToRegister.Email"></ion-input>
               </ion-item>
-              
+                       
+              <ion-item>
+                <ion-label position="floating" color="primary">Teléfono (opcional)</ion-label>
+                <ion-input type="number" ngModel name="telefono" [(ngModel)]="userToRegister.Cellphone"></ion-input>
+              </ion-item>
+
               <ion-item>
                 <ion-label position="floating" color="primary">País</ion-label>
-                <ion-select placeholder="Selecciona tu paìs">
-                    <ion-select-option value="f">Female</ion-select-option>
-                    <ion-select-option value="m">Male</ion-select-option>
-                  </ion-select>
+                <ion-select placeholder="Selecciona tu paìs" name="pais" [(ngModel)]="userToRegister.Country">
+                    <ion-select-option *ngFor="let country of availableCountries" [value]="country">{{country.Name}}</ion-select-option>
+                </ion-select>
               </ion-item>
-              
+
               <ion-item>
-                <ion-label position="floating" color="primary">Teléfono</ion-label>
-                <ion-input type="number" ngModel required name="UserName"></ion-input>
+                <ion-label position="floating" color="primary">Selecciona tus preferencias de anuncios</ion-label>
+                <ion-select placeholder="Selecciona tus preferencias" name="preferencias" [(ngModel)]="userToRegister.SelectedPreferences">
+                    <ion-select-option *ngFor="let preference of availablePreferences" [value]="preference">{{preference.Name}}</ion-select-option>
+                </ion-select>
               </ion-item>
   
               <div padding>
-                <ion-button type="submit" (click)="loginUser()" [disabled]="form.invalid" expand="block">
+                <ion-button type="submit" [disabled]="form.invalid" expand="block">
                   Registrarse</ion-button>
               </div>
   

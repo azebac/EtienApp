@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
-import { HttpHeaders } from '@angular/common/http';
+
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,8 @@ import { throwError } from 'rxjs';
 })
 export class BaseService {
 
-  public httpService: HTTP = this.injector.get(HTTP);
+  public httpService: HttpClient = this.injector.get(HttpClient);
+  
   constructor(public injector: Injector) { }
 
   httpOptions = {
